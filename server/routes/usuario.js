@@ -6,8 +6,9 @@ const _ = require('underscore');
 const app = express();
 const Usuario = require('../models/usuario');
 
+const { verifyToken, adminRole } = require('../middlewares/auth');
 
-app.get('/usuario', (req, res) => {
+app.get('/usuario', verifyToken ,(req, res) => {
 
 	let desde = Number(req.query.desde) || 0;
 	let limit = Number(req.query.limit) || 5;
@@ -21,7 +22,7 @@ app.get('/usuario', (req, res) => {
 		if(err){
 			return res.status(400).json({
 				code: 400,
-				error: err
+				err
 			});
 		}
 
@@ -38,7 +39,7 @@ app.get('/usuario', (req, res) => {
 
 });
 
-app.post('/usuario', (req, res) => {
+app.post('/usuario', [verifyToken, adminRole], (req, res) => {
 	let body = req.body;
 
 	let usuario = new Usuario({
@@ -53,7 +54,7 @@ app.post('/usuario', (req, res) => {
 		if(err){
 			return res.status(400).json({
 				code: 400,
-				error: err
+				err
 			});
 		}
 
@@ -66,7 +67,7 @@ app.post('/usuario', (req, res) => {
 
 });
 
-app.put('/usuario/:id', (req, res) => {
+app.put('/usuario/:id', [verifyToken, adminRole], (req, res) => {
 
 	let id = req.params.id;
 	let body = _.pick(req.body, ['name', 'email', 'img', 'role', 'status']);
@@ -81,7 +82,7 @@ app.put('/usuario/:id', (req, res) => {
 		if(err){
 			return res.status(400).json({
 				code: 400,
-				error: err
+				err
 			});
 		}
 
@@ -93,7 +94,7 @@ app.put('/usuario/:id', (req, res) => {
 	
 });
 
-app.delete('/usuario/:id', (req, res) => {
+app.delete('/usuario/:id', [verifyToken, adminRole], (req, res) => {
 	let id = req.params.id;
 
 	/*
@@ -129,14 +130,14 @@ app.delete('/usuario/:id', (req, res) => {
 		if(err){
 			return res.status(400).json({
 				code: 400,
-				error: err
+				err
 			});
 		}
 
 		if(user == null){
 			return res.status(400).json({
 				code: 404,
-				error: "User not found"
+				err: "User not found"
 			});
 		}
 
