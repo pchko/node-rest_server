@@ -14,5 +14,5 @@ process.env.EXPIRED_DATE_TOKEN = 60 * 60 * 24 * 30;  //30 DIAS
 //SEED TOKEN
 process.env.SEED = process.env.SEED || 'pchko';
 
-
-
+//GOOGLE CLIENT ID
+process.env.GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '179563909629-60n1q4vc4oa1k8fb0qbihl5c3jgbigcu.apps.googleusercontent.com';

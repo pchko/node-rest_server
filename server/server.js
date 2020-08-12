@@ -7,6 +7,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const db = mongoose.connection;
 
+//Herramienta para construir directorios
+const path = require('path');
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
  
@@ -17,6 +20,9 @@ app.use(bodyParser.json());
 //Archivo de rutas
 app.use( require('./routes/index') );
 
+
+// Habilitar carpeta public
+app.use( express.static( path.resolve(__dirname, '../public')) );
 
 //Conexion BD
 mongoose.connect(process.env.URLDB, {
