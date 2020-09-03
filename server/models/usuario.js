@@ -54,4 +54,4 @@ user.methods.toJSON = function(){
 
 user.plugin(uniqueValidator, {message: '{PATH} ya se encuentra registrado'});
 
-module.exports = mongoose.model('user', user);
+module.exports = mongoose.model('User', user);

@@ -9,7 +9,7 @@ process.env.URLDB = process.env.NODE_ENV === 'dev' ? 'mongodb://localhost:27017/
 
 
 //TOKEN
-process.env.EXPIRED_DATE_TOKEN = 60 * 60 * 24 * 30;  //30 DIAS
+process.env.EXPIRED_DATE_TOKEN = 60 * 60 * 24 * 300;  //30 DIAS
 
 //SEED TOKEN
 process.env.SEED = process.env.SEED || 'pchko';

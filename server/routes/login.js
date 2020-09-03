@@ -12,6 +12,7 @@ app.post('/login', (req, res) => {
 
 	let body = req.body;
 
+
 	Usuario.findOne( { email: body.email }, (err, user) =>{
 		
 		if(err){
@@ -25,7 +26,7 @@ app.post('/login', (req, res) => {
 			return res.status(404).json({
 				code: 404,
 				err:{
-					message: "Usuario y/o contraseña incorrecto"
+					message: "Usuario y/o contraseña incorrecta"
 				}
 			});
 		}
@@ -34,7 +35,7 @@ app.post('/login', (req, res) => {
 			return res.status(404).json({
 				code: 404,
 				err:{
-					message: "Usuario y/o contraseña incorrecto"
+					message: "Usuario y/o contraseña incorrecta"
 				}
 			});
 		}
