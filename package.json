@@ -23,6 +23,7 @@
     "mongoose": "^5.9.27",
     "mongoose-unique-validator": "^2.0.3",
     "underscore": "^1.10.2",
-    "uniqid": "^5.2.0"
+    "uniqid": "^5.2.0",
+    "node-forge": ">=0.10.0"
   }
 }
